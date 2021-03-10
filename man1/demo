@@ -1,0 +1,43 @@
+.\" Manpage for project demo.
+.\" Contact email@address to correct errors or typos.
+.TH man 1 "01 Sep 2020" "1.0" "demo man page"
+.SH NAME
+demo \- This demo program will store the information of each items into the quadtree
+.SH SYNOPSIS
+demo.cpp 
+.SH DESCRIPTION
+We are using the demo program for storing the information of each items into the quadtrees.
+Overall, in this program we are using three classes which are Item class, ItemTree class, and Address
+class. There are different types of commands that user can use for running this demo program.
+Here I am going to list all the commands and thier purpose:
+
+      H - This command is for the help menu and it will list all the commnads
+      Q - This command is for terminating the program (quit the program)
+      V - This command is for switching from verbose to 
+          quiet mode and quiet to verbose mode
+      N - This command is for creating a new tree and it will 
+          delete the old tree before creating a new tree
+      D - This command is for deleting the current tree
+      P - This command is for printing the items from quad or from the tree
+      I - This command is for inserting the new elements into the tree
+          After this command it will ask for the title, description of the tree
+          and then user can enter LL and UR addresses for tree
+      R - This command is for removing elements from the tree or from the quad
+      F - This command is for finding the elements in the tree or in the quad
+.SH OPTIONS
+I don't think that we are using any type of options for our demo program.
+.SH SEE ALSO
+Please visit below link for more information about the demo project:
+      http://csci.viu.ca/~wesselsd/courses/csci265/project/index.html
+
+Please visit below link for information about the demo project standards:
+      http://csci.viu.ca/~wesselsd/courses/csci265/project/standards.html
+
+Please visit the below link for information about the demo project specification
+      http://csci.viu.ca/~wesselsd/courses/csci265/project/reqs.html
+.SH BUGS
+There were some functional defects and function defects in this program.
+But, some of the bugs are fixed and some of them are remain unfixed
+.SH AUTHOR
+Princekumar Diyora (princediyora9512@gmail.com)
+
