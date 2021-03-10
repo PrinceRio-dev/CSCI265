@@ -1,0 +1,62 @@
+#! /bin/bash
+
+#we are taking the for loop and our variable name is fname
+#this will go through each arguments and check that it is readable file or not and
+#if it is directory then will show the error message
+#if it is the readable file then it will display the message like who comitted that file,
+#the first five lines of that file and number of lines and number of characters in that file
+#if the file is not readable it will show the error message
+#if the filename is invalid then it also will display the error message
+
+for fname in "$@" ; do
+
+   if [[ -d "$fname" ]] ; then
+      echo " "
+      echo "ERROR: $fname is a Directory not a File."
+   elif [[ -f "$fname" ]] ; then
+      if [[ -r "$fname" ]] ; then
+         echo " "
+	      echo "$fname is Readable File."
+	      echo " "
+
+	    #showing the who committed the given file using git blame command
+	 #but we are piping out the output to the less
+	 echo "Now we are showing who committed each line of the $fname file :"
+	 git blame $fname | less
+	 echo " "
+
+	 #showing the first five lines of the file using head command with -n option
+	 echo "First Five lines of $fname file :"
+	 head -n 5 $fname
+                
+	 #now showing the number of lines and numbere of characters in that file
+	 echo " "
+
+	 #capturing the result of number of lines in the 
+    wordCount=$(wc $fname)
+   a=$($wordCount | awk '{ print $1" "}')
+    echo "$wordCount" | awk '{ print $3" "}'
+   
+	 #lines_count=
+	 echo "The number of Lines are: $a in the given file."
+
+	 #capturing the result of number of characters in the given variable
+	 #character_count=$($wordCount -m $fname)
+	 echo "The number of Characters are: $character_count in the given file."
+         echo " "
+      #if the file is not readable will show the eeror messge	
+      else 
+         echo " "
+	 echo "$fname is Not a Readable File."
+         echo " "
+      fi
+   else
+      echo " "
+      #if the given file name is not valid than will display the error message
+      echo "ERROR: $fname is Not a Valid FileName"
+      echo "Please enter a valid file name:)" 
+      echo " "
+   fi 
+   #closing of the if statement
+
+done #closing of the for loop

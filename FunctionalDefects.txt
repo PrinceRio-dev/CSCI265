@@ -1,0 +1,26 @@
+* Warnings and error messages are not directed to the standard error stream, everything
+  is directed to the standard output stream
+
+* when I am entering the "nice job", it will create 'n' new tree and 'i' as an insert command but "ce job"
+  should be the title of the tree but it is asking me to enter the title of the tree and so that is
+  the reason it is not behaving according to specification
+
+* spec says that delete command should not produce the output but when you already deleted the tree and 
+  entering the command again and again it is showing error message and it should go to the standard error stream
+
+* when I enter address string which is greater than permitted address length then it should take first M
+  characters while inserting the item, but in reality it is taking the same address length which is entered by the user
+
+* when you enter the greater LL address than UR address then it is Not identifying
+  the smallest region points and it is still taking the cordiantes which is 
+  supplied by the user
+
+* when you enter the valid data while insertion in the quiet mode it shows the message like "Item inserted in quadrant"
+  but as per spec it should simply proceeds to the routine command prompt
+
+* when you enter invalid choice other than qQtT in the quiet mode then it will show you the message like
+  "Error: neither quadrant nor tree was selected, please try again" but in the spec it says it should 
+  not give any message to user
+
+
+

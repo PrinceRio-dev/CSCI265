@@ -1,0 +1,112 @@
+Script started on Mon 09 Nov 2020 09:54:17 AM PST
+]0;diyorapr@otter: ~/csci265/projectdiyorapr@otter:~/csci265/project$ gdb bin/demo
+GNU gdb (Debian 7.12-6) 7.12.0.20161007-git
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from bin/demo...done.
+(gdb) break src/ItemTree.cpp:Itemtree::printTree[1Pree::printTreeTree::printTree[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Breakpoint 1 at 0x53cd: file src/ItemTree.cpp, line 111.
+(gdb) break src/ItemTree.cpp:62
+Breakpoint 2 at 0x4f70: file src/ItemTree.cpp, line 62.
+(gdb) run
+Starting program: /home/student/diyorapr/csci265/project/bin/demo 
+
+Welcome to the ItemTree demo
+Enter any one of the following commands:
+   Q to quit
+   H to display this menu
+   V to toggle verbose mode (prompts/messages)
+   N to create a new tree (deletes old)
+   D to delete the current tree
+   P to print items from the tree
+   I to insert new elements in the tree
+   R to remove elements from the tree
+   F to find elements in the tree
+
+Enter a command (QHNDPFVIR: H is help)> N
+Enter a command (QHNDPFVIR: H is help)> I
+Enter a single line of text for the new item title: >diyorapr
+Enter a single line of text for the new item description: >9 09:59
+Next provide the address of the item's lower left cornerEnter the quaternary address or * for global
+1023
+Next provide the address of the item's upper right cornerEnter the quaternary address or * for global
+10311
+
+Breakpoint 2, ItemTree::insert (this=0x555555770440, i=0x555555770560, 
+    t=@0x555555770440: 0x555555770460) at src/ItemTree.cpp:62
+62	   switch (quad[t->quadrant.length()]) {
+(gdb) print success
+$1 = false
+(gdb) watch success
+Hardware watchpoint 3: success
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00005555555593cd in ItemTree::printTree(ItemTree::tnode*) 
+                                                   at src/ItemTree.cpp:111
+2       breakpoint     keep y   0x0000555555558f70 in ItemTree::insert(Item*, ItemTree::tnode*&) 
+                                                   at src/ItemTree.cpp:62
+	breakpoint already hit 1 time
+3       hw watchpoint  keep y                      success
+(gdb) next
+68	         if (!t->q1) t->q1 = create(t, '1');
+(gdb) step
+ItemTree::create (this=0x555555770440, p=0x555555770460, q=49 '1') at src/ItemTree.cpp:94
+94	   if (!p) return NULL;
+(gdb) backtrace
+#0  ItemTree::create (this=0x555555770440, p=0x555555770460, q=49 '1') at src/ItemTree.cpp:94
+#1  0x000055555555907b in ItemTree::insert (this=0x555555770440, i=0x555555770560, 
+    t=@0x555555770440: 0x555555770460) at src/ItemTree.cpp:68
+#2  0x000055555555898d in ItemTree::insert (this=0x555555770440, i=0x555555770560)
+    at src/../hdr/ItemTree.h:51
+#3  0x0000555555557c5a in insertCmd (IT=@0x7fffffffe3b0: 0x555555770440, verbose=true)
+    at src/demo.cpp:240
+#4  0x00005555555573d1 in processCommand (IT=@0x7fffffffe3b0: 0x555555770440, cmd=Insert, 
+    verbose=@0x7fffffffe3bb: true) at src/demo.cpp:123
+#5  0x0000555555556c8f in main () at src/demo.cpp:12
+(gdb) c
+Continuing.
+
+Breakpoint 2, ItemTree::insert (this=0x555555770440, i=0x555555770560, 
+    t=@0x555555770488: 0x555555770610) at src/ItemTree.cpp:62
+62	   switch (quad[t->quadrant.length()]) {
+(gdb) c
+Continuing.
+
+Hardware watchpoint 3: success
+
+Old value = false
+New value = true
+ItemTree::insert (this=0x555555770440, i=0x555555770560, t=@0x555555770440: 0x555555770460)
+    at src/ItemTree.cpp:70
+70	         break;
+(gdb) c
+Continuing.
+
+Watchpoint 3 deleted because the program has left the block in
+which its expression is valid.
+0x000055555555898d in ItemTree::insert (this=0x555555770440, i=0x555555770560)
+    at src/../hdr/ItemTree.h:51
+51	     bool insert(Item *i) { return insert(i, root); }
+(gdb) c
+Continuing.
+Item inserted in quadrant 10
+Enter a command (QHNDPFVIR: H is help)> q
+Deallocating item tree and shutting down
+
+[Inferior 1 (process 4875) exited normally]
+(gdb) quit
+]0;diyorapr@otter: ~/csci265/projectdiyorapr@otter:~/csci265/project$ exit
+exit
+
+Script done on Mon 09 Nov 2020 10:13:28 AM PST

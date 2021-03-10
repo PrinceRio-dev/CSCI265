@@ -1,0 +1,112 @@
+
+BUG REPORT :
+
+When I was working on my lab3 I found some functional defects in it and I have 
+choosed my two best functional defects from their and I am writing a report on 
+those bugs.
+
+------------------------------------------------------------------------------------------------------
+
+1. BUG1 : Greater LL address than UR address while insertion
+
+OS : I was on my Windows 10 machine and I was connted to the VIU server via using
+     Software named BitVise, and I was working on Linux machine
+
+Summary :
+   Bad : "Cancelling the output which is given by system not by the user"
+
+Description :
+   Overview : The bug I have found, I think it is bad for our system beacuse 
+              doesn't meet the user requirements. while insertion of the LL address and
+              UR address, requirement says that if user enters grater LL address than UR 
+              address then it should identify the smallest region whose LL and UR addresses that
+              encompass both points and uses the region's LL and UR instead of the user supplied 
+              coordinates, but in reality it is not doing what it supposes to do.
+   
+   Steps to Reproduce :
+               1. run the demo program
+               2. enter N command
+               3. enter I command
+               4. give any title you want to give
+               5. write any description you want to write
+               6. Now please enter greater value for LL address (ex.33333)
+               7. Now Please enter lower value than LL for the UR address (ex.00000)
+               8. enter P command
+               9. enter T command
+               10.enter * sign
+               11.you will find the bug
+
+   Actual Result :
+               It will give you the buggy output. If you follwed the above 
+               step carefully then you will get output like this :
+
+               Printing tree from ""
+               Start of quadrant
+               bug::bug(:3333300000,0000033333)
+               end of tree
+
+   Expected Result :
+               Printing tree from ""
+               Start of quadrant
+               bug::bug(:0000000000,3333333333)
+               end of tree
+
+   Build Date & Platform :
+               Distributor ID: Debian
+               Description:    Debian GNU/Linux 9.13 (stretch)
+               Release:        9.13
+               Codename:       stretch
+
+   More Information :
+               It is easy to fix this bug in a short time
+
+--------------------------------------------------------------------------------------------------------------
+
+2. BUG2 : Showing the error message in non-verbose mode
+
+   OS : I was on my Windows 10 machine and I was connted to the VIU server via using
+        Software named BitVise, and I was working on Linux machine
+
+   Summary :
+      Good : "Prompting the error message while in non-verbose mode"
+
+   Description :
+      Overview : The bug I have found from the demo program, I think so it is good bug and 
+                 I can say that it is minor bug. When we are printing and finding the elements 
+                 in the tree via non-verbose mode, it asks user to enter his or her choice for single quadrant or for
+                 entire tree. User can enter (QqTt) for what they want but if user enters any other characters or string
+                 it will display the error message but we are in non-verbose mode and according to the specification
+                 it shouldn't display the error message. In addition, it should show user empty string to enter the command again.
+                 This thing is happing in finding and printing function. But here I am giving the example of printing function
+                
+   Steps to Reproduce :
+               1. run the demo program ./demo
+               2. enter V command
+               3. enter N command
+               4. enter I command
+               5. give any title you want to give
+               6. write any single line description you want to write
+               7. Now please enter LL address (ex.000000) *you can enter anything that you want
+               8. Now Please enter UR address (ex.333333)
+               9. enter P command
+               10.enter any command other than (QqTt)
+               11.you will find the error message that is the bug
+
+   Actual Result :
+               It will give you the buggy output. If you follwed the above 
+               step carefully then you will get output like this :
+
+               Error: neither quadrant nor tree was selected, please try again
+
+   Expected Result :
+               We are expecting empty string that mean user can enter command again or we can say blank line
+               
+   Build Date & Platform :
+               Distributor ID: Debian
+               Description:    Debian GNU/Linux 9.13 (stretch)
+               Release:        9.13
+               Codename:       stretch
+
+   More Information :
+               I think so we can esily fix this minor bug
+

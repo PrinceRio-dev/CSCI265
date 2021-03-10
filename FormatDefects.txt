@@ -1,0 +1,24 @@
+* In the Help menu not clear message after V command, "(prompts/messages)"
+  this text string confuses the user
+
+* when I am entering "hello" it will show me the help meanu first and it will show
+  four error message which says invalid command but they should be in the new line but they are not
+
+* "Next provide the address of the item's lower left cornerEnter the quaternary address or * for global"
+  "Next provide the address of the item's upper right cornerEnter the quaternary address or * for global"
+  The given message should have the separate line as per the spec but in out put it is not showing the separate line
+
+* when you enter the invalid address in the verbose mode it will show the warning but after that it will
+  not show you the correct message:
+  "WARNING: rrrr is not a valid address"
+  "(either just *, or 1-10 digits 0-3)" typo here we don't need (1-10) beacuse if you will enter anything
+  between 1-10 will give an error message, the valid digits are (0-3)
+
+* when we are printing the single quadrant in the verbose mode it is showing the message like this:
+  "Printing quad from "2"" -> this is is not in our requirements so we can remove this string
+  "::(2:2200000000,2333333333)" -> after the above message it is printing what we want
+
+* when we are finding the items in the tree when we found the match with title it gives the output as described:
+  "Found: p::p(:0000000000,3333333333)" I think that we don't need the "found" word beacuse it is not
+  matching with the requirements format. Might me its a wording mistake
+
