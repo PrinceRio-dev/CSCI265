@@ -1,0 +1,58 @@
+
+CSCI 265 lab 4 marks/feedback:
+
+Mark (out of 18): 18
+
+
+Feedback: general
+=================
+
+
+Feedback: 2 bug fixes
+=====================
+ - fixed cerr bugs
+ - got rid of "Item inserted" messages in quiet mode
+
+Feedback: gdb exercise
+======================
+ - done
+
+Feedback: valgrind exercise and  memory leak fix
+================================================
+ - fix looks ok, though should probably check *i is not null before trying a delete
+
+Feedback: profiling exercise
+============================
+ - done
+
+
+------------ Discussion -----------------
+As with previous labs, this is feedback that is being included for
+   all students, it might include things you have already addressed,
+   this time the discussion revolves around the most like bugs folks
+   chose to fix:
+
+Swapping cout/cerr for the various error/warning messages should
+   be relatively straight-forward.
+
+The bug where entering "nice" fails to use the "ce" as the title
+   comes from within insertCmd, where the getline actually discards
+   everything after the I up to the first newline.  Care must be taken
+   when fixing this, however, since if the user types command I then
+   hits enter then we *do* want to get rid of that newline.
+
+The memory leak:
+
+   When a new item is being inserted, demo.cpp does the actual
+      allocation of the new item and passes a pointer to the item
+      to ItemTree::insert, which inserts it into some node's
+      item list using t->itemlist.push_back
+
+   When an ItemTree is being deleted, the destructor calls the
+      destroy method, which does a postorder traversal of the tnodes,
+      deleting them as it goes.  What it fails to do, however, is
+      to go through each node's itemlist, deleting the items that
+      have been stored in that list.  The solution would be to
+      have the destroy method iterate through the itemlist and
+      run delete on each (non-null) item pointer in the list.
+

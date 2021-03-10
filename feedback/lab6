@@ -1,0 +1,25 @@
+
+CSCI 265 lab 6 marks/feedback:
+
+Mark (out of 18): 16
+
+
+Feedback: general
+=================
+
+
+Feedback: conversions
+=====================
+ - in demo.cpp missed the type casts (char), e.g. (char)(Quit),
+   need to change to (wchar_t)
+ - missed the header file conversions of 'x' to L'x'
+
+Feedback: functions on "plain" text input
+=========================================
+ - works
+
+Feedback: functions on unicode text input
+=========================================
+ - works
+
+

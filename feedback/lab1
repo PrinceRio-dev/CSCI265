@@ -1,0 +1,18 @@
+
+CSCI 265 lab 1 marks/feedback:
+
+Mark (out of 18): 18
+
+
+Feedback:
+=========
+
+The "see also" section could reasonably refer the reader to the
+project web page for a more detailed description of the items and
+trees in use.
+
+The Description section should probably include a very short summary
+of the interactive commands (Q V etc).
+
+Note that [FILENAME] isn't actually supported by the demo program.
+

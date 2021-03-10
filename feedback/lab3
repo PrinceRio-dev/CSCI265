@@ -1,0 +1,85 @@
+
+CSCI 265 lab 3 marks/feedback:
+
+Mark (out of 18): 17
+
+
+Feedback: general
+=================
+
+
+Feedback: makefile update
+=========================
+
+
+Feedback: ItemTree.cpp methods
+==============================
+ - the while loops in your two find methods are missing the i++
+
+Feedback: defects lists
+=======================
+ - good, though see note below with respect to addresses
+
+Feedback: bug reports
+=====================
+ - again, good but see note below with respect to addresses
+
+
+
+
+
+---------------- Defects shortlist -------------------------
+(This list is being provided to everyone, you many have already
+ covered some/all of these points in your defect lists.)
+
+Format errors include
+ - extra output (beyond specs) produced when printing quad trees
+ - help indents the command options when it shouldn't
+ - insert on verbose mode is missing a line break
+ - when printing an item it uses a comma between LL and UR instead of a colon
+ - it displays longer warning messages than requested when user supplies invalid address
+ - it displays extra messages (beyond requested) following an insert
+ * insert on quiet mode still prints a message about item inserted in quad
+   (possibly regard as a functional error?)
+
+Core functional errors include
+
+ - command-reading consumes an entire word instead of a single command character,
+   e.g. "nice" as user input for a command should be treated as command "n"
+   followed by command "i" followed by "ce" as the title field
+
+ - errors/warnings are printed to stdout when they should be printed to stderr
+
+ - for printing of quads/subtrees, if an invalid address is provided for the quad/subtree
+      then the command ends after an error message, rather than proceeding on the basis
+      of a corrected address
+
+ - unclear handling of invalid addresses (confusing even in the user specs)
+      when the user provides invalid addresses the program is generally supposed
+         to produce a warning message and then proceed to autocorrect and use the
+         corrected version
+      in the case of too-long addresses it is supposed to use the correct prefix
+         but still store the entire address
+      in the case of invalid characters it is supposed to treat the part prior to
+         the first invalid character as the address (then if necessary pad with 0's
+         or 3's to the appropriate full length)
+      if LL is right and/or above UR then it is supposed to compute a bounding region
+         and use that region's LL and UR instead of the user's
+
+   some autocorrection seems to be taking place, such as:
+     - if address contains invalid chars it is truncated before first invalid char
+       then (if needed) padded with 0's/3's to full length
+     - if address is too long (but valid) the entire address is stored but it appears
+       (from the quadrant of insertion) that only the correct-length prefix is used
+       as the insertion quadrant
+     - if LL > UR it appears to be finding a bounding region (an enclosing quadrant),
+       but it is not at all clear that the region used is the region the user intended.
+       Example: for LL=112 and UR = 121 the tightest enclosing region would have corners
+       LL=103 and UR=130 (before padding with 0's and 3's respectively), but the current
+       implementation uses the smallest enclosing quadrant, 1, so LL=100 and UR=133
+
+   Note that a general baseline for handling invalid addresses might be to retain both
+      the original user-entered address AND the (corrected-if-necessary) addresses that
+      are actually in use, but this would require some modification to the header file
+      for the class itself
+

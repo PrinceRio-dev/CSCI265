@@ -1,0 +1,98 @@
+
+CSCI 265 lab 2 marks/feedback:
+
+Mark (out of 18): 10
+
+
+Feedback: general
+=================
+ - scripts don't follow indentation standards (3/4 spaces, not tabs)
+***one giant commit with all the changes, totally unacceptable by the
+   project standards
+
+Feedback: filecheck.sh
+======================
+ - if one file fails a test it stops the script, doesn't process remaining files
+ - tried to avoid requirement to *parse* the output of wc
+   (capturing the output in a variable and then dumping the variable to stdout
+    is little better than simply dumping wc's output directly to stdout)
+
+Feedback: runtests.sh
+=====================
+ - your script currently never calls your explore function
+ - your explore function tries to set its local variables from $dir and $fname
+   instead of from its parameters, $1 and $2
+ - your for loop tries to use dir_name as both the name of the upper
+   level directory and the loop variable: you need two different variables
+   e.g. for fname in "$dir_name"/* ; do
+ - when checking if something is a readable file, make sure you use -r and -f
+   (there are things other than directories and files)
+ - your recursive call to explore needs to pass the executable name as well
+   as the new directory name
+ - might be wise to rethink variable names for clarity,
+   e.g. exename and dirname for the passed params, and fname for the loop variable
+ - your run of the executable needs to take the current file as std input,
+   e.g. $exename < $fname
+
+
+Feedback: demo.cpp/standards
+============================
+ - improved comments and some prompts,
+   improved layout for some if statements,
+      but one of these introduces compile-time warning (line 99)
+   see section below for some additional considerations
+
+
+Suggested standards fixes for demo.cpp
+======================================
+
++----------------------------------------------+
+| I've added this list to everyone's feedback, |
+|    ignore anything you've already addressed  |
++----------------------------------------------+
+
+Errors and warnings definitely need to go to stderr
+   (currently they all go to stdout)
+
+Layout issues
+ - I'd certainly favour the addition of some whitespace to
+   improve readability/break up distinct code blocks
+ - there are numerous statements of the form
+         if (condition) blah
+   which really should (at least) be reformatted to
+         if (condition)
+             blah
+
+Identifiers not always clear
+ - there are lots of single-letter identifiers that could
+   really stand to be improved, and I wouldn't argue with
+   clarifications to a LOT of the names in the file
+
+Commenting not always adequate
+ - certainly missing a descriptive comment at the top of the file
+ - can debate the suitability of many of the comments,
+   I'll accept most reasonable interpretations for this one
+
+Use of contants
+ - use of constant strings for the prompt and some messages
+   would likely reduce the frequency of typos, but (since
+   standards specify constants belong in the header file)
+   you can't really fix this without permission to edit the
+   headers
+
+Replacing repetitive code chunks
+ - adding functions to replace repetitive code chunks would
+   require editing the header files (to keep to standards),
+   which again you don't have permission to do
+
+
+Checking of memory allocations
+ - there are a couple of places where new is used to
+   dynamically allocate memory, but there is no subsequent
+   check to see if the allocation failed (returned NULL) or not
+
+
+Extra variables
+ - there were several variables declared but not used,
+   these should be deleted
+

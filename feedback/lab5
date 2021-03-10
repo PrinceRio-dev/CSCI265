@@ -1,0 +1,103 @@
+
+CSCI 265 lab 5 marks/feedback:
+
+Mark (out of 18): 16
+
+
+Feedback: general
+=================
+
+
+Feedback: test script
+=====================
+ - fine, customization of supplied script, except tester has to
+   modify script or directory contents to pick/choose test sets to run
+ - still contains the "2>&1 >" issues discussed in the zoom lectures
+
+Feedback: test suite (files, organization)
+==========================================
+ - good
+
+Feedback: documentation (test script, cases)
+============================================
+ - good documentation, except couldn't find anything describing how
+   to run the actual test script?
+
+Feedback: documentation (report on demo)
+========================================
+ - good documentation
+
+
+---------------- test case notes -------------------------
+(This list is being provided to everyone, you many have already
+ covered some/all of these points in your test cases.)
+
+The list of test cases to cover is pretty extensive, here's
+an outline of one suite (I believe using 46 test cases) to
+cover most of them while trying to avoid testing too many
+different things in individual cases.
+
+[ I'm honestly not expecting that you did 40+ test cases,
+  but I'm hoping you tackled at least a dozen or so, and
+  that they represent a good cross section of the issues. ]
+
+Note this is just an outline, it doesn't include all the data
+for most cases, and doesn't include any of the expected output,
+it's just a summary of the likely input command sequence.
+
+1. Basic help and quit
+  H Q
+
+2. Verbose mode toggling
+  V V Q
+
+3. Testing when there isn't a tree
+  3a testing prints
+     P T *
+     P Q *
+     Q
+  3b testing removes
+     R T (target data)
+     R Q (target data)
+     Q
+  3c testing finds
+     F T (target data)
+     F Q (target data)
+     Q
+  3d testing deletes
+     D
+     Q
+
+4. Testing when the tree is empty
+   *4a-d just like the no-tree tests above,
+         except do an N first
+
+5. Testing the double-new tree
+   *5a-d just like the no-tree tests above,
+         except first do an N, an insert, and another N
+
+6. Testing single level trees (items on the global level)
+   *6a-d just like the no-tree cases above,
+         except first do an N and two global inserts
+         (e.g. addresses 0,1 and 2,3)
+   *6e-g perhaps one run of F/R's with each target that exists,
+         and one more with a target that doesn't exist
+
+7. Testing single level trees (items not on the global level)
+   *7a-d just like the no-tree cases above,
+         except first do an N and two inserts into quadrant 1
+         (e.g. addresses 11,13 and 1,1)
+   *7e-g perhaps one run of F/R's with each target that exists,
+         and one more with a target that doesn't exist
+
+8. Testing multi level trees
+   *8a-d just like the no-tree cases above,
+         except first do an N, two inserts into global quadrant,
+         two inserts into quadrant 0, and two into quadrant 23
+   *8e-k perhaps one run of F/R's with each target that exists,
+         and one more with a target that doesn't exist
+
+9. Testing functionality after delete
+   *9a-g just like case 6 (single level trees), but
+         first perform a new/insert/delete/new
+

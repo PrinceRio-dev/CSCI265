@@ -1,0 +1,32 @@
+
+CSCI 265 final project marks/feedback:
+
+Mark (out of 30): 29
+
+
+Feedback: general
+=================
+
+
+Feedback corrections: lab 1 (man page)
+======================================
+ - good
+
+Feedback corrections: lab 2 (scripts, demo.cpp)
+===============================================
+ - filecheck improved, though still stries to just dump the output
+      produced by wc call rather than actually parsing it
+ - runtests better, just needs to check directories are readable and executable before recursive call
+
+Feedback corrections: lab 3 (three iterator methods)
+====================================================
+ - done
+
+Feedback corrections: lab 4 (three bug fixes)
+=============================================
+ - ok
+
+Feedback corrections: lab 5 (test cases)
+========================================
+ - no test case expansion required
+
